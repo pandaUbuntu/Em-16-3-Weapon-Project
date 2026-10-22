@@ -61,9 +61,7 @@ namespace WindowsFormsApp3.Entities
             weaponSlots.Add(weapon);
 
             if (weaponSlots.Count == 1)
-            {
                 activeWeaponIndex = 0;
-            }
         }
 
         public void AddMagazine(Magazine magazine)

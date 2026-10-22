@@ -45,5 +45,10 @@ namespace WindowsFormsApp3.Entities
         {
             currentMagazine.DecreaseAmmo(1);
         }
+
+        public void RapidFire()
+        {
+
+        }
     }
 }
