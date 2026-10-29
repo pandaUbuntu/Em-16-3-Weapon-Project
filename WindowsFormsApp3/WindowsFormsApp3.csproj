@@ -52,6 +52,7 @@
     <Compile Include="Entities\Weapon.cs" />
     <Compile Include="Entities\WeaponType\AssaultRiffle.cs" />
     <Compile Include="Entities\WeaponType\Pistol.cs" />
+    <Compile Include="Entities\WeaponType\Shotgun.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -20,24 +20,21 @@ namespace WindowsFormsApp3.Entities
 
         public List<Magazine> GetMagazines() => magazines;
 
+        public List<Weapon> GetWeapons() => weaponSlots;
+
+        public int GetActiveWeaponIndex() => activeWeaponIndex;
+
+        public void ChooseWeapon(int index)
+        {
+            if (index < 0 || index >= weaponSlots.Count)
+                throw new ArgumentOutOfRangeException("index");
+
+            activeWeaponIndex = index;
+        }
+
         public void ReloadActiveWeapon()
         {
-            Weapon activeWeapon = GetActiveWeapon();
-
-            List<Magazine> tmpArray = magazines.FindAll(mag => mag.GetCaliber() == activeWeapon.GetCaliber());
-            
-            if(tmpArray.Count == 0)
-                throw new Exception("Not a magazine by caliber");
-
-            if (tmpArray.Count > 1)
-                tmpArray.Sort((m1, m2) => m2.GetCurrentAmmoCount().CompareTo(m1.GetCurrentAmmoCount()));
-
-
-            var oldMagazine = activeWeapon.Reload(tmpArray[0]);
-            this.magazines.RemoveAll(mag => mag.GetId() == tmpArray[0].GetId());
-
-            if (oldMagazine != null)
-                this.magazines.Add(oldMagazine);
+            GetActiveWeapon().Reload(magazines);
         }
 
         public Weapon GetActiveWeapon()

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelWeaponName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -39,6 +40,8 @@
             this.buttonShoot = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
             this.listBoxMagazine = new System.Windows.Forms.ListBox();
+            this.listBoxWeapons = new System.Windows.Forms.ListBox();
+            this.timerAutoFire = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +63,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(760, 80);
             this.groupBox1.TabIndex = 1;
+            this.groupBox1.Text = "Режим вогню";
             this.groupBox1.TabStop = false;
             // 
             // radioButton1
@@ -72,6 +76,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "radioButton1";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButtonFireMode_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -82,6 +87,7 @@
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "radioButton2";
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButtonFireMode_CheckedChanged);
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton3
@@ -94,6 +100,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "radioButton3";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButtonFireMode_CheckedChanged);
             // 
             // labelCurrentAmmo
             // 
@@ -130,7 +137,8 @@
             this.buttonShoot.TabIndex = 5;
             this.buttonShoot.Text = "Постріл";
             this.buttonShoot.UseVisualStyleBackColor = true;
-            this.buttonShoot.Click += new System.EventHandler(this.buttonShoot_Click);
+            this.buttonShoot.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonShoot_MouseDown);
+            this.buttonShoot.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonShoot_MouseUp);
             // 
             // buttonReload
             // 
@@ -151,6 +159,21 @@
             this.listBoxMagazine.Size = new System.Drawing.Size(379, 254);
             this.listBoxMagazine.TabIndex = 7;
             // 
+            // listBoxWeapons
+            // 
+            this.listBoxWeapons.FormattingEnabled = true;
+            this.listBoxWeapons.ItemHeight = 25;
+            this.listBoxWeapons.Location = new System.Drawing.Point(17, 237);
+            this.listBoxWeapons.Name = "listBoxWeapons";
+            this.listBoxWeapons.Size = new System.Drawing.Size(360, 254);
+            this.listBoxWeapons.TabIndex = 8;
+            this.listBoxWeapons.SelectedIndexChanged += new System.EventHandler(this.listBoxWeapons_SelectedIndexChanged);
+            // 
+            // timerAutoFire
+            // 
+            this.timerAutoFire.Interval = 100;
+            this.timerAutoFire.Tick += new System.EventHandler(this.timerAutoFire_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
@@ -165,6 +188,7 @@
             this.Controls.Add(this.labelCurrentAmmo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelWeaponName);
+            this.Controls.Add(this.listBoxWeapons);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
@@ -189,6 +213,8 @@
         private System.Windows.Forms.Button buttonShoot;
         private System.Windows.Forms.Button buttonReload;
         private System.Windows.Forms.ListBox listBoxMagazine;
+        private System.Windows.Forms.ListBox listBoxWeapons;
+        private System.Windows.Forms.Timer timerAutoFire;
     }
 }
 
